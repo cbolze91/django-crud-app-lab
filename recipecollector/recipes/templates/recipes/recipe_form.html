@@ -1,0 +1,7 @@
+<h1>Add Recipe</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Recipe</button>
+</form>
