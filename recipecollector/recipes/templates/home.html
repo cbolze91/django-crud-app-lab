@@ -1,3 +1,14 @@
 <h1>Recipe Collector</h1>
 <p>Welcome to my Django CRUD app.</p>
 <a href="/recipes/">View Recipes</a>
+
+{% if user.is_authenticated %}
+<p>Logged in as {{ user.username }}</p>
+
+<form action="/accounts/logout/" method="post">
+    {% csrf_token %}
+    <button type="submit">Log Out</button>
+</form>
+{% else %}
+<a href="/accounts/login/">Log In</a>
+{% endif %}
