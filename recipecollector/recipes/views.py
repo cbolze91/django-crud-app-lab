@@ -42,3 +42,8 @@ class IngredientCreate(CreateView):
 class IngredientDelete(DeleteView):
     model = Ingredient
     success_url = reverse_lazy('recipe-index')
+
+class IngredientUpdate(UpdateView):
+    model = Ingredient
+    fields = ['name', 'amount', 'recipe']
+    success_url = reverse_lazy('recipe-index')

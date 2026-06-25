@@ -11,8 +11,18 @@
 {% for ingredient in recipe.ingredient_set.all %}
 <p>
     {{ ingredient.amount }} {{ ingredient.name }}
-    <a href="/ingredients/{{ ingredient.id }}/delete/">Delete</a>
+
+    <a href="/ingredients/{{ ingredient.id }}/update/">
+        Edit
+    </a>
+
+    |
+
+    <a href="/ingredients/{{ ingredient.id }}/delete/">
+        Delete
+    </a>
 </p>
+
 {% empty %}
 <p>No ingredients added yet.</p>
 {% endfor %}
