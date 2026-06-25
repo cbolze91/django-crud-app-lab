@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
 <h1>Add Ingredient</h1>
 
 <form method="post">
@@ -7,3 +11,5 @@
 </form>
 
 <a href="/recipes/{{ object.recipe.id }}/">Cancel</a>
+
+{% endblock %}

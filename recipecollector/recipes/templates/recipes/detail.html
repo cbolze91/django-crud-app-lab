@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
 <h1>{{ recipe.name }}</h1>
 
 <p>Cuisine: {{ recipe.cuisine }}</p>
@@ -32,3 +36,5 @@
 <a href="/recipes/{{ recipe.id }}/update/">Edit Recipe</a>
 
 <a href="/recipes/{{ recipe.id }}/delete/">Delete Recipe</a>
+
+{% endblock %}

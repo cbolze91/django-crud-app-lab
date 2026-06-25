@@ -1,0 +1,22 @@
+<nav>
+    <a href="/">Home</a> |
+    <a href="/recipes/">Recipes</a> |
+    <a href="/recipes/create/">Add Recipe</a>
+
+    {% if user.is_authenticated %}
+    | <span>Welcome, {{ user.username }}</span>
+
+    <form action="/accounts/logout/" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit">Log Out</button>
+    </form>
+    {% else %}
+    | <a href="/accounts/login/">Log In</a>
+    | <a href="/accounts/signup/">Sign Up</a>
+    {% endif %}
+</nav>
+
+<hr>
+
+{% block content %}
+{% endblock %}

@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
 <h1>Delete Ingredient</h1>
 
 <p>Are you sure you want to delete {{ object.amount }} {{ object.name }}?</p>
@@ -8,3 +12,5 @@
 </form>
 
 <a href="/recipes/{{ object.recipe.id }}/">Cancel</a>
+
+{% endblock %}
