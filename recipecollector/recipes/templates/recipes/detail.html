@@ -6,6 +6,19 @@
 
 <p>Cook Time: {{ recipe.cook_time }} minutes</p>
 
+<h2>Ingredients</h2>
+
+{% for ingredient in recipe.ingredient_set.all %}
+<p>
+    {{ ingredient.amount }} {{ ingredient.name }}
+    <a href="/ingredients/{{ ingredient.id }}/delete/">Delete</a>
+</p>
+{% empty %}
+<p>No ingredients added yet.</p>
+{% endfor %}
+
+<a href="/ingredients/create/">Add Ingredient</a>
+
 <a href="/recipes/{{ recipe.id }}/update/">Edit Recipe</a>
 
 <a href="/recipes/{{ recipe.id }}/delete/">Delete Recipe</a>

@@ -4,6 +4,8 @@ from .models import Recipe
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from .models import Recipe, Ingredient
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 def home(request):
     return render(request, 'home.html')
@@ -30,4 +32,13 @@ class RecipeUpdate(UpdateView):
 
 class RecipeDelete(DeleteView):
     model = Recipe
+    success_url = reverse_lazy('recipe-index')
+
+class IngredientCreate(CreateView):
+    model = Ingredient
+    fields = ['name', 'amount', 'recipe']
+    success_url = reverse_lazy('recipe-index')
+
+class IngredientDelete(DeleteView):
+    model = Ingredient
     success_url = reverse_lazy('recipe-index')
