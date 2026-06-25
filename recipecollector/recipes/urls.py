@@ -15,4 +15,5 @@ urlpatterns = [
     views.IngredientUpdate.as_view(),
     name='ingredient-update'
 ),
+    path('accounts/signup/', views.signup, name='signup'),
 ]
