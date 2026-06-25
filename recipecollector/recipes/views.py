@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
 from .models import Recipe
+from django.views.generic.edit import CreateView, UpdateView
 
 def home(request):
     return render(request, 'home.html')
@@ -18,5 +19,9 @@ def recipe_detail(request, recipe_id):
     )
 
 class RecipeCreate(CreateView):
+    model = Recipe
+    fields = ['name', 'cuisine', 'description', 'cook_time']
+
+class RecipeUpdate(UpdateView):
     model = Recipe
     fields = ['name', 'cuisine', 'description', 'cook_time']
