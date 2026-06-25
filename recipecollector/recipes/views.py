@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Recipe, Ingredient
 
@@ -44,33 +44,33 @@ def signup(request):
     return render(request, 'registration/signup.html', context)
 
 
-class RecipeCreate(CreateView):
+class RecipeCreate(LoginRequiredMixin, CreateView):
     model = Recipe
     fields = ['name', 'cuisine', 'description', 'cook_time']
 
 
-class RecipeUpdate(UpdateView):
+class RecipeUpdate(LoginRequiredMixin, UpdateView):
     model = Recipe
     fields = ['name', 'cuisine', 'description', 'cook_time']
 
 
-class RecipeDelete(DeleteView):
+class RecipeDelete(LoginRequiredMixin, DeleteView):
     model = Recipe
     success_url = reverse_lazy('recipe-index')
 
 
-class IngredientCreate(CreateView):
+class IngredientCreate(LoginRequiredMixin, CreateView):
     model = Ingredient
     fields = ['name', 'amount', 'recipe']
     success_url = reverse_lazy('recipe-index')
 
 
-class IngredientUpdate(UpdateView):
+class IngredientUpdate(LoginRequiredMixin, UpdateView):
     model = Ingredient
     fields = ['name', 'amount', 'recipe']
     success_url = reverse_lazy('recipe-index')
 
 
-class IngredientDelete(DeleteView):
+class IngredientDelete(LoginRequiredMixin, DeleteView):
     model = Ingredient
     success_url = reverse_lazy('recipe-index')
