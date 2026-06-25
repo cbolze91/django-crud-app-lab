@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views.generic.edit import CreateView
 from .models import Recipe
 from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 def home(request):
     return render(request, 'home.html')
@@ -25,3 +27,7 @@ class RecipeCreate(CreateView):
 class RecipeUpdate(UpdateView):
     model = Recipe
     fields = ['name', 'cuisine', 'description', 'cook_time']
+
+class RecipeDelete(DeleteView):
+    model = Recipe
+    success_url = reverse_lazy('recipe-index')
